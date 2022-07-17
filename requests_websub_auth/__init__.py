@@ -34,7 +34,7 @@ class WebSubAuth(AuthBase):
         if len(key) >= 200:
             raise ValueError("key must be < 200 bytes in length")
         self.algorithm = algorithm or WebSubAlgorithm.SHA1
-        self.key = key.encode() if isinstance(key, str) else key
+        self.key = key
 
     def __call__(self, request: PreparedRequest) -> PreparedRequest:
         hmac = HMAC(
